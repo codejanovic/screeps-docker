@@ -1,0 +1,32 @@
+version: '2'
+services:
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes:
+          - mongo-volume:/data/db             
+        restart: always  
+    redis:
+        container_name: redis
+        image: redis
+        volumes:
+          - redis-volume:/data             
+        restart: always    
+    screeps:
+        container_name: screeps
+        image: screeps        
+        ports:
+          - "21025:21025"
+        environment:
+          - STEAMKEY=YOUR_STEAM_KEY_GOES_HERE
+          - MODS=screepsmod-mongo screepsmod-auth screepsmod-tickrate screepsmod-admin-utils screepsmod-features
+        volumes:
+          - screeps-volume:/screeps
+        depends_on:
+          - mongo
+          - redis
+
+volumes:
+    mongo-volume:
+    redis-volume:
+    screeps-volume:
