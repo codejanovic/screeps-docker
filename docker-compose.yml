@@ -14,7 +14,7 @@ services:
         restart: always    
     screeps:
         container_name: screeps
-        image: screeps        
+        image: codejanovic/screeps        
         ports:
           - "21025:21025"
         environment:
