@@ -9,9 +9,10 @@ ENV DB_PATH=/screeps/db.json ASSET_DIR=/screeps/assets \
 	DRIVER_MODULE="@screeps/driver"
 
 COPY start.sh /screeps/
+COPY custom_mods.json /screeps/
 
 RUN chmod +x /screeps/start.sh \
-&& yarn add screeps@$SCREEPS_VERSION screepsmod-mongo screepsmod-auth screepsmod-tickrate screepsmod-admin-utils screepsmod-features \
+&& yarn add screeps@$SCREEPS_VERSION \
 && ln -s /app/node_modules/.bin/* /usr/local/bin/ 
 
 WORKDIR /screeps

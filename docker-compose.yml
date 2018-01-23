@@ -14,12 +14,13 @@ services:
         restart: always    
     screeps:
         container_name: screeps
-        image: codejanovic/screeps        
+        image: codejanovic/screeps      
         ports:
           - "21025:21025"
         environment:
-          - STEAMKEY=YOUR_STEAM_KEY_GOES_HERE
-          - MODS=screepsmod-mongo screepsmod-auth screepsmod-tickrate screepsmod-admin-utils screepsmod-features
+          - STEAMKEY=YOUR_STEAMKEY_GOES_HERE       
+          - MONGO_LINK=mongo
+          - REDIS_LINK=redis
         volumes:
           - screeps-volume:/screeps
         depends_on:
